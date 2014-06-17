@@ -1,0 +1,7 @@
+{
+    "host": "localhost",
+    "user": "root",
+    "password": "aritel",
+    "database": "teletaxi_club",
+    "port": 3306
+}
