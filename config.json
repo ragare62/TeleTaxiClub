@@ -1,0 +1,7 @@
+{
+    "apiPort": 3000,
+    "msqlHost": "localhost",
+    "msqlUser": "root",
+    "msqlPassword": "aritel",
+    "msqlPort": 3306
+}

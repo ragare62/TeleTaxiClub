@@ -1,0 +1,13 @@
+{
+  "name": "TaxiClub",
+  "version": "0.0.1",
+  "description": "Sistema de fidelización TaxiClub",
+  "dependencies": {
+    "mysql": "*",
+    "express": "~4.0.0",
+    "body-parser": "~1.0.1",
+    "morgan": "*",
+    "cors": "*",
+    "formidable": "^1.0.14"
+  }
+}
