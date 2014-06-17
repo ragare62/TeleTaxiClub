@@ -135,10 +135,13 @@
     <!-- SB Admin Scripts - Include with every page -->
     <script src="js/sb-admin.js"></script>
     <!-- Knockout -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js"></script>
+    <script src="js/knockout-3.1.0.js"></script>
     <!-- Bootbox, para secar mensajes en pantalla -->
     <script type="text/javascript" src="js/bootbox.js"></script>
+    <!-- Teletaxi Club funciones generales para todas las páginas -->
+    <script type="text/javascript" src="js/teletaxi_club.js"></script>
     <!-- Scripts a nivel de página -->
+    <script type="text/javascript" src="js/premios_web.js"></script>
     <script type="text/javascript">
         // declaración general de variables
         var tablaPremios;
@@ -196,7 +199,8 @@
                 success:function(premios, textStatus){
                     dataPremios = premios;
                     loadTablaPremios();
-                }
+                },
+                error: errorAjax
             });
         }
         function loadTablaPremios(){
@@ -263,9 +267,6 @@
                     }                   
                 ]
             });
-        }
-        function redrawTable(){
-            window.location.reload();
         }
     </script>
     <script>

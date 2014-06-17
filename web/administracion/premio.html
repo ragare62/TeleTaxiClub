@@ -209,178 +209,20 @@
     <!-- Librería propia -->    
     <script type="text/javascript" src="js/teletaxi_club.js"></script>
 
+    <!-- Funciones JS de soporte a la página-->
+    <script type="text/javascript" src="js/premios_web.js"></script>
     <!-- Modelo Knockout -->
     <script type="text/javascript">
-        function viewModel(){
-            var self = this;
-            self.idPremio = ko.observable();
-            self.titulo = ko.observable();
-            self.descripcion = ko.observable();
-            self.puntos = ko.observable();
-            self.desdeFecha = ko.observable();
-            self.hastaFecha = ko.observable();
-            self.stockInicial = ko.observable();
-            self.nombreFichero = ko.observable();
-        }
-        var vm = new viewModel();
-        ko.applyBindings(vm);
+
     </script>
     <!-- Eventos de controles -->
     <script type="text/javascript">
-            var datosOK = function(){
-                $('#frmPremio').validate({
-                    rules:{
-                        titulo:{required:true},
-                        descripcion:{required:false},
-                        puntos:{required:true, number:true},
-                        desdeFecha:{required:false, date:true},
-                        hastaFecha:{required:false, date:true},
-                        stockInicial:{required:true}
-                    },
-                    messages:{
-
-                    }
-                });
-            $.validator.methods.date = function(value, element){
-                return this.optional(element) || moment(value,"DD/MM/YYYY").isValid();
-            }
-            return $('#frmPremio').valid();
-        }
-
-        $("#btnAceptar").click(function(){
-            if (!datosOK()){
-                bootbox.alert("Hay errores en el formulario", function(){});
-                return;
-            }
-            // tratamiento de las posibles fechas nulas
-            var desdeFecha;
-            if (moment(vm.desdeFecha(),"DD/MM/YYYY").isValid())
-            var desdeFecha = moment(vm.desdeFecha(),"DD/MM/YYYY").format("YYYY-MM-DD");
-            var hastaFecha;
-            if (moment(vm.hastaFecha(),"DD/MM/YYYY").isValid())
-            var hastaFecha = moment(vm.hastaFecha(),"DD/MM/YYYY").format("YYYY-MM-DD");            
-            var data = {
-                "idPremio": vm.idPremio(),
-                "titulo": vm.titulo(),
-                "descripcion": vm.descripcion(),
-                "puntos": vm.puntos(),
-                "desdeFecha": desdeFecha,
-                "hastaFecha": hastaFecha,
-                "stockInicial": vm.stockInicial(),
-                "nombreFichero": vm.nombreFichero()
-            };
-            if (vm.idPremio()){
-                $.ajax({
-                    type: "PUT",
-                    url: "http://localhost:3000/api/premios/" + vm.idPremio(),
-                    dataType: "json",
-                    contentType: "application/json",
-                    data: JSON.stringify(data),
-                    success: function(data, status){
-                        window.open('premios.html','_self');
-                    },
-                    error: function (xhr, textStatus, errorThrwon) {
-                        bootbox.alert("ERROR:<br/>" +  xhr.responseText, function(){
-                            // nada
-                        });
-                    }
-                });
-            }else{
-                data.idPremio = 0;                
-                $.ajax({
-                    type: "POST",
-                    url: "http://localhost:3000/api/premios/",
-                    dataType: "json",
-                    contentType: "application/json",
-                    data: JSON.stringify(data),
-                    success: function(data, status){
-                        window.open('premios.html','_self');
-                    },
-                    error: function (xhr, textStatus, errorThrwon) {
-                        bootbox.alert("ERROR:<br/>" + xhr.responseText, function(){
-                            // nada
-                        });
-                    }
-                });
-            }
-        });
-        function sucUpload(file, data){
-            console.log('Success');
-            console.log('file: ', file);
-            console.log('data: ', data);
-            $('#imagen').attr('src',data.FullUrl);
-            vm.nombreFichero(data.FileName);
-        }
-        function errUpload(file, data){
-            console.log('ErrUpload');
-            console.log('file: ', file);
-            console.log('data: ', data);
-            vm.nombreFichero(null);
-        }
-        function createUpload(){
-            // montar el control de carga
-            $("#uploadImage").pekeUpload({
-                    theme: "bootstrap",
-                    multi: false,
-                    btnText: "Cargar / cambiar imagen",
-                    url: "http://localhost:3000/api/uploads/" + vm.idPremio(),
-                    onFileError: errUpload,
-                    onFileSuccess: sucUpload,
-                });            
-        }
     </script>
 
     <!-- Zona de ejecución del prorama tras la carga de valores -->
     <script type="text/javascript">
         $(document).ready(function() {
-            // verificar si en la url nos han pasado un valor
-            var idPremio = gup('IdPremio');
-            // si la hay cargamos los datos del premio con el id pasado
-            if (idPremio){
-                // búsqueda del registro implicado
-                $.ajax({
-                    type: "GET",
-                    url: "http://localhost:3000/api/premios/" + idPremio,
-                    dataType: "json",
-                    contentType: "application/json",
-                    success: function(data, status){
-                        // ha conseguido leerlo
-                        vm.idPremio(data.idPremio);
-                        vm.titulo(data.titulo);
-                        vm.descripcion(data.descripcion);
-                        vm.puntos(data.puntos);
-                        if (moment(data.desdeFecha).isValid())
-                            vm.desdeFecha(moment(data.desdeFecha).format('DD/MM/YYYY'));
-                        else
-                            vm.desdeFecha("");
-                        if (moment(data.hastaFecha).isValid())
-                            vm.hastaFecha(moment(data.hastaFecha).format('DD/MM/YYYY'));
-                        else
-                            vm.hastaFecha("");
-                        vm.stockInicial(data.stockInicial);
-                        vm.nombreFichero(data.nombreFichero);
-                        if (vm.nombreFichero()){
-                            $('#imagen').attr('src',"http://localhost:3000/images/" + vm.nombreFichero());
-                        }
-                        createUpload();
-                    },
-                    error: function (xhr, textStatus, errorThrwon) {
-                        bootbox.alert("ERROR:<br/>" + xhr.responseText, function(){
-                            // regresa a la pantalla de premios
-                            // normalmente es debido a un "premio no encontrado"
-                            window.open('premios.html','_self');
-                        });
-
-                    }
-                });
-
-            }else{
-                vm.idPremio(0);
-                createUpload();
-            }
-            $("#frmPremio").submit(function() {
-                return false;
-            });
+            initForm();
         });
     </script>
 

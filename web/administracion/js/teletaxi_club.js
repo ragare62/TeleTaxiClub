@@ -11,3 +11,11 @@ function gup(name) {
     else
         return results[1];
 }
+
+// función general para mostrar mensajes de error de AJAX
+
+var errorAjax = function(xhr, textStatus, errorThrwon) {
+    var m = xhr.responseText;
+    if (!m) m = "Error general posiblemente falla la conexión";
+    bootbox.alert("<span class='text-danger'>ERROR:</span><br/>" + m, function() {});
+}
