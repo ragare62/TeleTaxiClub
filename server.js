@@ -15,6 +15,7 @@ var config = require('./config.json')
 var miembros_api = require('./lib/miembros_api');
 var premios_api = require('./lib/premios_api');
 var uploads_api = require('./lib/uploads_api');
+var login_miembro = require('./lib/login_miembro_api');
 
 // utilizar el parseador
 app.use(bodyParser());
@@ -81,6 +82,12 @@ router.route('/uploads/:premio_id')
 //====================================================================
 // FIN Rutas relacionadas con carga de ficheros
 
+// Rutas relacionadas con login
+//====================================================================
+router.route('/login_miembro')
+    .post(login_miembro.getLoginMiembro);
+//====================================================================
+// Fin rutas login
 // REGISTRAR LAS RUTAS
 app.use('/api', router);
 

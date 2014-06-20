@@ -11,12 +11,19 @@
     <!-- Core CSS - Include with every page -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
-
+    <link href="css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
     <!-- Page-Level Plugin CSS - Blank -->
 
     <!-- SB Admin CSS - Include with every page -->
     <link href="css/sb-admin.css" rel="stylesheet">
-
+    <style type="text/css">
+        label.error {
+        color:red;
+        }
+        input.error {
+        border:1px solid red;
+        }
+    </style>
 </head>
 
 <body>
@@ -81,141 +88,147 @@
         </nav>
 
         <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header text-success">Tus datos <i class="fa fa-table fa-fw"></i></h1>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-success">
-                        <div class="panel-heading">
-                            <h2>Datos personales</h2>
-                            <p>Puedes cambiar aquí tus datos personales, sólo los marcados con (*) son obligatorios</p>
+            <form id="frmMiembro">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header text-success">Tus datos <i class="fa fa-table fa-fw"></i></h1>
+                    </div>
+                    <div class="col-lg-12 text-right">
+                        <div class="form-group text-right">
+                            <button id="btnGuardar1" class="btn btn-success btn-lg">Guardar</button>
                         </div>
-                        <div class="panel-body">
-                           <div class="form-group">
-                                <label>Correo electrónico (*)</label>
-                                <input class="form-control">
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h2>Datos personales</h2>
+                                <p>Puedes cambiar aquí tus datos personales, sólo los marcados con (*) son obligatorios</p>
                             </div>
+                            <div class="panel-body">
+                               <div class="form-group">
+                                    <label>Correo electrónico (*)</label>
+                                    <input class="form-control" type="email" id="email" name="email" data-bind="value: email">
+                                </div>
 
-                           <div class="form-group">
-                                <label>Nombre (*)</label>
-                                <input class="form-control">
-                            </div>
-                           <div class="form-group">
-                                <label>Primer Apellido (*)</label>
-                                <input class="form-control">
-                            </div>
-                           <div class="form-group">
-                                <label>Segundo Apellido</label>
-                                <input class="form-control">
-                            </div>
-                           <div class="form-group">
-                                <label>Dirección</label>
-                                <input class="form-control">
-                            </div>
-                            <div class= "row">
-                                <div class="col-lg-4">
-                                   <div class="form-group">
-                                        <label>Código postal</label>
-                                        <input class="form-control">
-                                   </div>
+                               <div class="form-group">
+                                    <label>Nombre (*)</label>
+                                    <input class="form-control" type="text" id="nombre" name="nombre" data-bind="value: nombre">
                                 </div>
-                                <div class="col-lg-8">
-                                   <div class="form-group">
-                                        <label>Población</label>
-                                        <input class="form-control">
-                                   </div>
+                               <div class="form-group">
+                                    <label>Primer Apellido (*)</label>
+                                    <input class="form-control" type="text" id="primerApellido" name="primerApellido" data-bind="value: primerApellido">
                                 </div>
-                            </div>
-                            <div class= "row">
-                                <div class="col-lg-6">
-                                   <div class="form-group">
-                                        <label>Provincia</label>
-                                        <input class="form-control">
-                                   </div>
+                               <div class="form-group">
+                                    <label>Segundo Apellido</label>
+                                    <input class="form-control" type="text" id="segundoApellido" name="segundoApellido" data-bind="value: segundoApellido">
                                 </div>
-                                <div class="col-lg-6">
-                                   <div class="form-group">
-                                        <label>Pais</label>
-                                        <input class="form-control">
-                                   </div>
+                               <div class="form-group">
+                                    <label>Dirección</label>
+                                    <input class="form-control" type="text" id="direccion" name="direccion" data-bind="value: direccion">
                                 </div>
-                            </div>
-                            <div class="form-group text-right">
-                                <a href="tuspuntos.html" class="btn btn-success">Guardar</a>
+                                <div class= "row">
+                                    <div class="col-lg-4">
+                                       <div class="form-group">
+                                            <label>Código postal</label>
+                                            <input class="form-control" type="text" id="codigoPostal" name="codigoPostal" data-bind="value: codigoPostal">
+                                       </div>
+                                    </div>
+                                    <div class="col-lg-8">
+                                       <div class="form-group">
+                                            <label>Población</label>
+                                            <input class="form-control" type="text" id="poblacion" name="poblacion" data-bind="value: poblacion">
+                                       </div>
+                                    </div>
+                                </div>
+                                <div class= "row">
+                                    <div class="col-lg-6">
+                                       <div class="form-group">
+                                            <label>Provincia</label>
+                                            <input class="form-control" type="text" id="provincia" name="provincia" data-bind="value: provincia">
+                                       </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                       <div class="form-group">
+                                            <label>Pais</label>
+                                            <input class="form-control" type="text" id="pais" name="pais" data-bind="value: pais">
+                                       </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- /.row (datos y login-->
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="panel panel-success">
-                        <div class="panel-heading">
-                            <h2>Teléfonos asociados</h2>
-                            <p>Proporciónanos hasta 5 teléfonos desde los habitualmente llamas a un taxi.</p>
-                        </div>
-                        <div class="panel-body">
-                            <div class="form-group">
-                                <label>Teléfono (1)</label>
-                                <input class="form-control">
+                <!-- /.row (datos y login-->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h2>Teléfonos asociados</h2>
+                                <p>Proporciónanos hasta 5 teléfonos desde los habitualmente llamas a un taxi.</p>
                             </div>
-                            <div class="form-group">
-                                <label>Teléfono (2)</label>
-                                <input class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Teléfono (3)</label>
-                                <input class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Teléfono (4)</label>
-                                <input class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Teléfono (5)</label>
-                                <input class="form-control">
-                            </div>
-                            <div class="form-group text-right">
-                                <a href="tuspuntos.html" class="btn btn-success">Guardar</a>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label>Teléfono (1)</label>
+                                    <input class="form-control" type="text" id="telefono1" name="telefono1" data-bind="value: telefono1">
+                                </div>
+                                <div class="form-group">
+                                    <label>Teléfono (2)</label>
+                                    <input class="form-control" type="text" id="telefono2" name="telefono2" data-bind="value: telefono2">
+                                </div>
+                                <div class="form-group">
+                                    <label>Teléfono (3)</label>
+                                    <input class="form-control" type="text" id="telefono3" name="telefono3" data-bind="value: telefono3">
+                                </div>
+                                <div class="form-group">
+                                    <label>Teléfono (4)</label>
+                                    <input class="form-control" type="text" id="telefono4" name="telefono4" data-bind="value: telefono4">
+                                </div>
+                                <div class="form-group">
+                                    <label>Teléfono (5)</label>
+                                    <input class="form-control" type="text" id="telefono5" name="telefono5" data-bind="value: telefono5">
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-6">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h2>Cambio de contraseña</h2>
+                                <p>Introduce dos veces la contraseña que quieres usar a partir de ahora.</p>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label>Contraseña</label>
+                                    <input type="password" class="form-control" id="pass1" name="pass1" data-bind="value: pass1">
+                                </div>
+                                <div class="form-group">
+                                    <label>Repite contraseña</label>
+                                    <input type="password" class="form-control" id="pass2" name="pass2" data-bind="value: pass2">
+                                </div>
+                            </div>
+                        </div>                
+                    </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="panel panel-success">
-                        <div class="panel-heading">
-                            <h2>Cambio de contraseña</h2>
-                            <p>Introduce dos veces la contraseña que quieres usar a partir de ahora.</p>
+                <hr/>
+                <div class="row">
+                    <div class="col-lg-12 text-right">
+                        <div class="form-group text-right">
+                            <button id="btnGuardar2" class="btn btn-success btn-lg">Guardar</button>
                         </div>
-                        <div class="panel-body">
-                            <div class="form-group">
-                                <label>Contraseña</label>
-                                <input type="password" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Repite contraseña</label>
-                                <input type="password" class="form-control">
-                            </div>
-                            <div class="form-group text-right">
-                                <a href="tuspuntos.html" class="btn btn-success">Guardar</a>
-                            </div>
-                        </div>
-                    </div>                
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
         <!-- /#page-wrapper -->
 
     </div>
     <!-- /#wrapper -->
 
-    <!-- Core Scripts - Include with every page -->
+   <!-- Core Scripts - Include with every page -->
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
@@ -225,7 +238,37 @@
     <!-- SB Admin Scripts - Include with every page -->
     <script src="js/sb-admin.js"></script>
 
-    <!-- Page-Level Demo Scripts - Blank - Use for reference -->
+    <!-- Moment formateo de fechas -->
+    <script type="text/javascript" src="js/moment-with-langs.js"></script>
+    <!-- Knockout para el tratamiento de los modelos -->
+    <script type="text/javascript" src="js/knockout-3.1.0.js"></script>
+    <!-- Bootbox, para secar mensajes en pantalla -->
+    <script type="text/javascript" src="js/bootbox.js"></script>
+    <!-- Libreria para verificación -->
+    <script type="text/javascript" src="js/jquery.validate.js"></script>
+    <script type="text/javascript" src="js/messages_es.js"></script>
+    <!-- Widget para carga de ficheros -->
+    <script type="text/javascript" src="js/pekeUpload.js"></script>
+
+    <!-- Librería propia -->    
+    <script type="text/javascript" src="js/teletaxi_club.js"></script>
+
+    <!-- Funciones JS de soporte a la página-->
+    <script type="text/javascript" src="js/tusdatos_web.js"></script>
+    <!-- Modelo Knockout -->
+    <script type="text/javascript">
+
+    </script>
+    <!-- Eventos de controles -->
+    <script type="text/javascript">
+    </script>
+
+    <!-- Zona de ejecución del prorama tras la carga de valores -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            initForm();
+        });
+    </script>
 
 </body>
 

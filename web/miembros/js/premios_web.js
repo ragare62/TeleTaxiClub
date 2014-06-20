@@ -298,6 +298,14 @@ function cargarPremio(idPremio) {
                     $('#imagen').attr('src', "http://localhost:3000/images/" + vm.nombreFichero());
                 }
                 createUpload(vm.idPremio());
+            },
+            error: function(xhr, textStatus, errorThrwon) {
+                bootbox.alert("ERROR:<br/>" + xhr.responseText, function() {
+                    // regresa a la pantalla de premios
+                    // normalmente es debido a un "premio no encontrado"
+                    window.open('premios.html', '_self');
+                });
+
             }
         });
 
