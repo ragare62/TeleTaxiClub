@@ -19,3 +19,14 @@ var errorAjax = function(xhr, textStatus, errorThrwon) {
     if (!m) m = "Error general posiblemente falla la conexión";
     bootbox.alert("<span class='text-danger'>ERROR:</span><br/>" + m, function() {});
 }
+
+// funcion general para el formateo de fechas.
+    function formatDate(date) {
+        if (!date) {
+            return "";
+        }
+        if (!moment(date).isValid()) {
+            return "";
+        }
+        return moment(date).format("DD/MM/YYYY");
+    }

@@ -18,6 +18,7 @@ var uploads_api = require('./lib/uploads_api');
 var login_miembro = require('./lib/login_miembro_api');
 var llamadas_api = require('./lib/llamadas_api');
 var canjes_api = require('./lib/canjes_api');
+var puntos_api = require('./lib/puntos_api');
 
 // utilizar el parseador
 app.use(bodyParser());
@@ -55,6 +56,8 @@ router.route('/miembros/:miembro_id')
     .get(miembros_api.getMiembro)
     .put(miembros_api.putMiembro)
     .delete(miembros_api.deleteMiembro);
+router.route('/miembros_detalle/:miembro_id')
+    .get(miembros_api.getMiembroDetalle);
 
 //===================================================================
 // FIN Rutas relacionadas con miembros
@@ -112,6 +115,13 @@ router.route('/canjes/:canje_id')
 
 //===================================================================
 // FIN Rutas relacionadas con canjes
+
+// Rutas relacionadas con puntos
+//====================================================================
+router.route('/puntos/:miembro_id')
+    .get(puntos_api.getPuntosMiembro);
+//====================================================================
+// Fin rutas llamadas
 
 // REGISTRAR LAS RUTAS
 app.use('/api', router);

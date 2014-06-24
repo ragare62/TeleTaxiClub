@@ -32,6 +32,7 @@ function miembroModel() {
     self.telefono3 = ko.observable();
     self.telefono4 = ko.observable();
     self.telefono5 = ko.observable();
+    self.fechaAlta = ko.observable();
     // no pertenece al modelo pero
     // da apoyo
     self.pass1 = ko.observable();
@@ -40,7 +41,7 @@ function miembroModel() {
     self.nombreCompleto = ko.computed(function() {
         var nc = self.primerApellido();
         if (self.segundoApellido()) {
-            nc += self.segundoApellido;
+            nc += ' ' + self.segundoApellido();
         }
         nc += ", " + self.nombre();
         return nc;
@@ -130,6 +131,7 @@ function cargarMiembro(idMiembro) {
                 vm.telefono3(data.telefono3);
                 vm.telefono4(data.telefono4);
                 vm.telefono5(data.telefono5);
+                vm.fechaAlta(data.fechaAlta);
             },
             error: function(xhr, textStatus, errorThrwon) {
                 bootbox.alert("ERROR:<br/>" + xhr.responseText, function() {
