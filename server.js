@@ -16,6 +16,8 @@ var miembros_api = require('./lib/miembros_api');
 var premios_api = require('./lib/premios_api');
 var uploads_api = require('./lib/uploads_api');
 var login_miembro = require('./lib/login_miembro_api');
+var llamadas_api = require('./lib/llamadas_api');
+var canjes_api = require('./lib/canjes_api');
 
 // utilizar el parseador
 app.use(bodyParser());
@@ -88,6 +90,29 @@ router.route('/login_miembro')
     .post(login_miembro.getLoginMiembro);
 //====================================================================
 // Fin rutas login
+
+// Rutas relacionadas con llamadas
+//====================================================================
+router.route('/llamadas_miembro/:miembro_id')
+    .get(llamadas_api.getLlamadasMiembro);
+//====================================================================
+// Fin rutas llamadas
+
+
+// INICIO Rutas relacionadas con canjes
+//===================================================================
+router.route('/canjes')
+    .get(canjes_api.getCanjes)
+    .post(canjes_api.postCanje);
+
+router.route('/canjes/:canje_id')
+    .get(canjes_api.getCanje)
+    .put(canjes_api.putCanje)
+    .delete(canjes_api.deleteCanje);
+
+//===================================================================
+// FIN Rutas relacionadas con canjes
+
 // REGISTRAR LAS RUTAS
 app.use('/api', router);
 

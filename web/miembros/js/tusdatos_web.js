@@ -36,6 +36,15 @@ function miembroModel() {
     // da apoyo
     self.pass1 = ko.observable();
     self.pass2 = ko.observable();
+    //
+    self.nombreCompleto = ko.computed(function() {
+        var nc = self.primerApellido();
+        if (self.segundoApellido()) {
+            nc += self.segundoApellido;
+        }
+        nc += ", " + self.nombre();
+        return nc;
+    });
 }
 
 function datosOK() {
@@ -85,6 +94,9 @@ function datosOK() {
         if (vm.pass1() !== vm.pass2()) {
             bootbox.alert("Las contraseñas no coinciden", function() {});
             dok = false;
+        } else {
+            // las contraseñas coinciden, quiere cambiaralas
+            vm.password(vm.pass1());
         }
     }
     return dok;

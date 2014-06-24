@@ -3,5 +3,6 @@
     "user": "root",
     "password": "aritel",
     "database": "teletaxi_club",
+    "database_llamadas": "aritaxi",
     "port": 3306
 }
