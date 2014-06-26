@@ -93,6 +93,8 @@ router.route('/uploads/:premio_id')
 //====================================================================
 router.route('/login_miembro')
     .post(login_miembro.getLoginMiembro);
+router.route('/login_miembro_primero')
+    .post(login_miembro.getLoginPrimero);
 //====================================================================
 // Fin rutas login
 
