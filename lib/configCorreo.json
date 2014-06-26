@@ -1,0 +1,14 @@
+{
+    "options": {
+        "host": "smtp.gmail.com",
+        "port": 465,
+        "requiresAuth": true,
+        "secureConnection": true,
+        "auth": {
+            "user": "rafa@myariadna.com",
+            "pass": "aritel2011"
+        }
+    },
+    "from": "TeleTaxi Club <ragare@gmail.com>",
+    "copias": "rafael.garcia@ariadnasoftware.com"
+}

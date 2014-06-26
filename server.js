@@ -19,6 +19,8 @@ var login_miembro = require('./lib/login_miembro_api');
 var llamadas_api = require('./lib/llamadas_api');
 var canjes_api = require('./lib/canjes_api');
 var puntos_api = require('./lib/puntos_api');
+var correo_api = require('./lib/correo_api');
+
 
 // utilizar el parseador
 app.use(bodyParser());
@@ -133,7 +135,15 @@ router.route('/confirma_carro/:miembro_id')
 router.route('/puntos/:miembro_id')
     .get(puntos_api.getPuntosMiembro);
 //====================================================================
-// Fin rutas llamadas
+// Fin rutas puntos
+
+
+// Rutas relacionadas con puntos
+//====================================================================
+router.route('/mail')
+    .post(correo_api.postCorreo);
+//====================================================================
+// Fin rutas puntos
 
 // REGISTRAR LAS RUTAS
 app.use('/api', router);

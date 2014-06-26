@@ -7,18 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Teletaxi Valencia - Club</title>
+   <!-- Core CSS - Include with every page -->
+   <link href="css/bootstrap.min.css" rel="stylesheet">
+   <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
 
-    <!-- Core CSS - Include with every page -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+   <!-- Page-Level Plugin CSS - Blank -->
+   <!-- Page-Level Plugin CSS - Tables -->
+   <link href="css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
 
-    <!-- Page-Level Plugin CSS - Blank -->
-    <!-- Page-Level Plugin CSS - Tables -->
-    <link href="css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
-
-    <!-- SB Admin CSS - Include with every page -->
-    <link href="css/sb-admin.css" rel="stylesheet">
-
+   <!-- SB Admin CSS - Include with every page -->
+   <link href="css/sb-admin.css" rel="stylesheet">
 </head>
 
 <body>
@@ -94,7 +92,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Relación de miembros del club <a href="miembro.html" class="btn btn-primary">Añadir</a>
+                            Relación de miembros del club
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -104,41 +102,14 @@
                                             <th>Nombre</th>
                                             <th>Correo</th>
                                             <th>Teléfono (1)</th>
-                                            <th>Puntos Obtenidos</th>
-                                            <th>Puntos Gastados</th>
-                                            <th>Saldo</th>
+                                            <th>Teléfono (2)</th>
+                                            <th>Teléfono (3)</th>
+                                            <th>Teléfono (4)</th>
+                                            <th>Teléfono (5)</th>
+                                            <th>Fecha alta</th>
                                             <th></th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Lopez Juan, Maria</td>
-                                            <td>marlop@gmail.com</td>
-                                            <td>6994557</td>
-                                            <td>20</td>
-                                            <td>0</td>
-                                            <td>20</td>
-                                            <td><a href="miembro.html" class="btn btn-small btn-primary">Detalles</a> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Komsky, Piotr</td>
-                                            <td>piotr@hotmail.ru</td>
-                                            <td>91225566</td>
-                                            <td>100</td>
-                                            <td>20</td>
-                                            <td>80</td>
-                                            <td><a href="miembro.html" class="btn btn-small btn-primary">Detalles</a> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Del Campo, Susana</td>
-                                            <td>suscamp@gemera.com</td>
-                                            <td>14822</td>
-                                            <td>5</td>
-                                            <td>0</td>
-                                            <td>5</td>
-                                            <td><a href="miembro.html" class="btn btn-small btn-primary">Detalles</a> </td>
-                                        </tr>                                                                                
-                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -160,37 +131,23 @@
     <!-- Page-Level Plugin Scripts - Tables -->
     <script src="js/plugins/dataTables/jquery.dataTables.js"></script>
     <script src="js/plugins/dataTables/dataTables.bootstrap.js"></script>
-
+    <!-- Moment formateo de fechas -->
+    <script type="text/javascript" src="js/moment-with-langs.js"></script>
     <!-- SB Admin Scripts - Include with every page -->
     <script src="js/sb-admin.js"></script>
-
-    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <!-- Knockout -->
+    <script src="js/knockout-3.1.0.js"></script>
+    <!-- Bootbox, para secar mensajes en pantalla -->
+    <script type="text/javascript" src="js/bootbox.js"></script>
+    <!-- Libreria para manejo de llamadas asícronas -->
+    <script type="text/javascript" src="js/async.js"></script>    
+    <!-- Teletaxi Club funciones generales para todas las páginas -->
+    <script type="text/javascript" src="js/teletaxi_club.js"></script>
+    <!-- Scripts a nivel de página -->
+    <script type="text/javascript" src="js/miembros_web.js"></script>
     <script>
     $(document).ready(function() {
-        $('#dataTableMiembros').dataTable({
-            language: {
-                        processing:     "Procesando...",
-                        search:        "Buscar: ",
-                        lengthMenu:    "Mostrar _MENU_ registros",
-                        info:          "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                        infoEmpty:       "Mostrando registros del 0 al 0 de un total de 0 registros",
-                        infoFiltered:   "(filtrado de un total de _MAX_ registros)",
-                        infoPostFix:    "",
-                        loadingRecords: "Cargando...",
-                        zeroRecords:    "No se encontraron resultados",
-                        emptyTable:    "Ningún dato disponible en esta tabla",
-                        paginate: {
-                            first:       "Primero",
-                            previous:   "Anterior",
-                            next:       "Siguiente",
-                            last:       "Último"
-                        },
-                        aria: {
-                            sortAscending:  ": Activar para ordenar la columna de manera ascendente",
-                            sortDescending: ": Activar para ordenar la columna de manera descendente"
-                        }
-                }
-        });
+        initMiembros();
     });
     </script>
 
