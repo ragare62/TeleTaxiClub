@@ -113,6 +113,18 @@ router.route('/canjes/:canje_id')
     .put(canjes_api.putCanje)
     .delete(canjes_api.deleteCanje);
 
+router.route('/canjes_miembro/:miembro_id')
+    .get(canjes_api.getCanjesMiembro);
+
+router.route('/carro/:miembro_id')
+    .get(canjes_api.getCarroMiembro);
+
+router.route('/borra_carro/:miembro_id')
+    .delete(canjes_api.deleteCarro);
+
+router.route('/confirma_carro/:miembro_id')
+    .post(canjes_api.confirmaCarro);
+
 //===================================================================
 // FIN Rutas relacionadas con canjes
 

@@ -39,12 +39,28 @@ function miembroModel() {
     self.pass2 = ko.observable();
     //
     self.nombreCompleto = ko.computed(function() {
-        var nc = self.primerApellido();
-        if (self.segundoApellido()) {
-            nc += ' ' + self.segundoApellido();
+        var nc = "Cargando..."
+        if (self.primerApellido()) {
+            nc = self.primerApellido();
+            if (self.segundoApellido()) {
+                nc += ' ' + self.segundoApellido();
+            }
+            nc += ", " + self.nombre();
         }
-        nc += ", " + self.nombre();
         return nc;
+    });
+    // urls para página
+    self.urlTuspuntos = ko.computed(function() {
+        return "tuspuntos.html?idMiembro=" + self.idMiembro();
+    });
+    self.urlTusdatos = ko.computed(function() {
+        return "tusdatos.html?idMiembro=" + self.idMiembro();
+    });
+    self.urlTucarro = ko.computed(function() {
+        return "tucarro.html?idMiembro=" + self.idMiembro();
+    });
+    self.urlTucatalogo = ko.computed(function() {
+        return "tucatalogo.html?idMiembro=" + self.idMiembro();
     });
 }
 

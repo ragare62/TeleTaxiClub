@@ -35,11 +35,14 @@ function miembroModel() {
     self.fechaAlta = ko.observable();
     //
     self.nombreCompleto = ko.computed(function() {
-        var nc = self.primerApellido();
-        if (self.segundoApellido()) {
-            nc += ' ' + self.segundoApellido();
+        var nc = "Cargando..."
+        if (self.primerApellido()) {
+            nc = self.primerApellido();
+            if (self.segundoApellido()) {
+                nc += ' ' + self.segundoApellido();
+            }
+            nc += ", " + self.nombre();
         }
-        nc += ", " + self.nombre();
         return nc;
     });
     //-- llamadas
@@ -50,6 +53,21 @@ function miembroModel() {
     self.puntos_obtenidos = ko.observable();
     self.puntos_gastados = ko.observable();
     self.puntos_saldo = ko.observable();
+    self.puntos_carro = ko.observable();
+    self.puntos_saldo_carro = ko.observable();
+    // urls para página
+    self.urlTuspuntos = ko.computed(function() {
+        return "tuspuntos.html?idMiembro=" + self.idMiembro();
+    });
+    self.urlTusdatos = ko.computed(function() {
+        return "tusdatos.html?idMiembro=" + self.idMiembro();
+    });
+    self.urlTucarro = ko.computed(function() {
+        return "tucarro.html?idMiembro=" + self.idMiembro();
+    });
+    self.urlTucatalogo = ko.computed(function() {
+        return "tucatalogo.html?idMiembro=" + self.idMiembro();
+    });
 }
 
 
@@ -87,7 +105,9 @@ function cargarMiembroDetalle(idMiembro) {
                 vm.canjes(data.canjes);
                 vm.puntos_obtenidos(data.puntos[0].obtenidos);
                 vm.puntos_gastados(data.puntos[0].gastados);
+                vm.puntos_carro(data.puntos[0].carro);
                 vm.puntos_saldo(data.puntos[0].saldo);
+                vm.puntos_saldo_carro(data.puntos[0].saldo_carro);
                 //
                 dataLlamadas = vm.llamadas();
                 loadTablaLlamadas();

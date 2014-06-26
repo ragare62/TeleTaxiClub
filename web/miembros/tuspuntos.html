@@ -69,16 +69,16 @@
                             <a href="#"><h3 class="text-success" data-bind="text: nombreCompleto"></h3></a>
                         </li>
                         <li>
-                            <a href="tuspuntos.html" class="text-success"><i class="fa fa-dashboard fa-fw"></i> Tus puntos</a>
+                            <a class="text-success" data-bind="attr:{href:urlTuspuntos}"><i class="fa fa-dashboard fa-fw"></i> Tus puntos</a>
                         </li>
                         <li>
-                            <a href="tusdatos.html" class="text-success"><i class="fa fa-table fa-fw"></i> Tus datos</a>
+                            <a data-bind="attr:{href:urlTusdatos}" class="text-success"><i class="fa fa-table fa-fw"></i> Tus datos</a>
                         </li>
                         <li>
-                            <a href="tucatalogo.html" class="text-success"><i class="fa fa-edit fa-fw"></i> Tu catálogo</a>
+                            <a data-bind="attr:{href:urlTucatalogo}" class="text-success"><i class="fa fa-edit fa-fw"></i> Tu catálogo</a>
                         </li>
                         <li>
-                            <a href="tucarro.html" class="text-success"><i class="fa fa-shopping-cart fa-fw"></i> Tu carro</a>
+                            <a data-bind="attr:{href:urlTucarro}" class="text-success"><i class="fa fa-shopping-cart fa-fw"></i> Tu carro</a>
                         </li>                        
                     </ul>
                     <!-- /#side-menu -->
@@ -108,10 +108,9 @@
                     </div>
                 </div>
                 <div class="col-log-8">
-                    <h4>Vé a <a href="tucatalogo.html">"Tu catálogo"</a> y elige allí el regalo que más te guste. Canjéalo por los puntos de que dispones </h4>
-                    <h4>En la zona  <a href="tusdatos.html">"Tus datos"</a> podrás modificar tu información de contacto o cambiar tu contraseña si lo deseas.</h4>
+                    <h4>Vé a <a data-bind="attr:{href:urlTucatalogo}">"Tu catálogo"</a> y elige allí el regalo que más te guste. Canjéalo por los puntos de que dispones </h4>
+                    <h4>En la zona  <a data-bind="attr:{href:urlTusdatos}">"Tus datos"</a> podrás modificar tu información de contacto o cambiar tu contraseña si lo deseas.</h4>
                     <h4>Más abajo tienes información de los puntos obtenidos y gastados en todo tu historial. Si quieres reclamar algún punto o hacer cualquier consulta, dirígenos un correo a <a href="mailto:club@teletaxivalencia.com">club@teletaxivalencia.com</a> </h4>
-
                 </div>
             </div>
 

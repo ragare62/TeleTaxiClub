@@ -53,7 +53,7 @@ function loginForm() {
             contentType: "application/json",
             data: JSON.stringify(data),
             success: function(data, status) {
-                window.open('tuspuntos.html', '_self');
+                window.open('tuspuntos.html?idMiembro=' + data.idMiembro, '_self');
             },
             error: errorAjax
         });
