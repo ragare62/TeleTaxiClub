@@ -7,18 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Teletaxi Valencia - Club</title>
+   <!-- Core CSS - Include with every page -->
+   <link href="css/bootstrap.min.css" rel="stylesheet">
+   <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
 
-    <!-- Core CSS - Include with every page -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+   <!-- Page-Level Plugin CSS - Blank -->
+   <!-- Page-Level Plugin CSS - Tables -->
+   <link href="css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
 
-    <!-- Page-Level Plugin CSS - Blank -->
-    <!-- Page-Level Plugin CSS - Dashboard -->
-    <link href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
-    <link href="css/plugins/timeline/timeline.css" rel="stylesheet">
-    
-    <!-- SB Admin CSS - Include with every page -->
-    <link href="css/sb-admin.css" rel="stylesheet">
+   <!-- SB Admin CSS - Include with every page -->
+   <link href="css/sb-admin.css" rel="stylesheet">
 
 </head>
 
@@ -82,43 +80,24 @@
             </div>
             <!-- /.navbar-static-side -->
         </nav>
-
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Panel de seguimiento</h1>
+                    <h1 class="page-header">Panel de seguimiento  <img id="loader" src="img/ajax-loader.gif"></h1>
                 </div>
                 <!-- /.col-lg-12 -->
+
             </div>
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-8">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Comparativo de llamadas
-                            <div class="pull-right">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                        Periodos
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu pull-right" role="menu">
-                                        <li><a href="#">Semana ctual</a>
-                                        </li>
-                                        <li><a href="#">Mes actual</a>
-                                        </li>
-                                        <li><a href="#">Año actual</a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Histórico</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Comparativo de llamadas (AÑO ACTUAL)
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div id="morris-area-chart"></div>
+                            <div id="morris-area-chart-ano"></div>
                         </div>
                         <!-- /.panel-body -->
                     </div>                    
@@ -126,11 +105,25 @@
                 <div class="col-lg-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Servicios por tipo
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Servicios por tipo (AÑO ACTUAL)
                         </div>
                         <div class="panel-body">
                             <div id="morris-donut-chart"></div>
                             <a href="#" class="btn btn-default btn-block">Ver detalles</a>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Comparativo de llamadas (HISTORICO)
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div id="morris-area-chart"></div>
                         </div>
                         <!-- /.panel-body -->
                     </div>                    
@@ -143,20 +136,35 @@
     </div>
     <!-- /#wrapper -->
 
+
     <!-- Core Scripts - Include with every page -->
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
 
-    <!-- Page-Level Plugin Scripts - Dashboard -->
-    <script src="js/plugins/morris/raphael-2.1.0.min.js"></script>
-    <script src="js/plugins/morris/morris.js"></script>
-
+    <!-- Page-Level Plugin Scripts - Tables -->
+    <script src="js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="js/plugins/dataTables/dataTables.bootstrap.js"></script>
+    <!-- Moment formateo de fechas -->
+    <script type="text/javascript" src="js/moment-with-langs.js"></script>
     <!-- SB Admin Scripts - Include with every page -->
     <script src="js/sb-admin.js"></script>
-
-    <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
-    <script src="js/demo/dashboard-demo.js"></script>
+    <!-- Knockout -->
+    <script src="js/knockout-3.1.0.js"></script>
+    <!-- Bootbox, para secar mensajes en pantalla -->
+    <script type="text/javascript" src="js/bootbox.js"></script>
+    <!-- Morris, para mostrar estadísticas con gráficas -->
+    <script src="js/plugins/morris/raphael-2.1.0.min.js"></script>
+    <script src="js/plugins/morris/morris.js"></script>t>
+    <!-- Teletaxi Club funciones generales para todas las páginas -->
+    <script type="text/javascript" src="js/teletaxi_club.js"></script>
+    <!-- Scripts a nivel de página -->
+    <script type="text/javascript" src="js/resumen_web.js"></script>
+    <script>
+    $(document).ready(function() {
+        loadResumen();
+    });
+    </script>
 
 
 </body>

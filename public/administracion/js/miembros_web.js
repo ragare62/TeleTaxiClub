@@ -27,6 +27,7 @@ function loadMiembros() {
         success: function(miembros, textStatus) {
             dataMiembros = miembros;
             loadTablaMiembros();
+            $('#loader').hide();
         },
         error: errorAjax
     });

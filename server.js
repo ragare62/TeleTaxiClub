@@ -20,6 +20,7 @@ var llamadas_api = require('./lib/llamadas_api');
 var canjes_api = require('./lib/canjes_api');
 var puntos_api = require('./lib/puntos_api');
 var correo_api = require('./lib/correo_api');
+var estadisticas_api = require('./lib/estadisticas_api');
 
 
 // utilizar el parseador
@@ -102,6 +103,15 @@ router.route('/login_miembro_primero')
 //====================================================================
 router.route('/llamadas_miembro/:miembro_id')
     .get(llamadas_api.getLlamadasMiembro);
+//====================================================================
+// Fin rutas llamadas
+
+// Rutas relacionadas con estadísticas
+//====================================================================
+router.route('/estadisticas/numllamadas')
+    .get(estadisticas_api.getNumLlamadas);
+router.route('/estadisticas/numllamadas/:ano')
+    .get(estadisticas_api.getNumLlamadasAno);
 //====================================================================
 // Fin rutas llamadas
 

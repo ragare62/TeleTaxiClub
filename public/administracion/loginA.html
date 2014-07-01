@@ -11,9 +11,17 @@
     <!-- Core CSS - Include with every page -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
-
+    <link href="css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
     <!-- SB Admin CSS - Include with every page -->
     <link href="css/sb-admin.css" rel="stylesheet">
+    <style type="text/css">
+    label.error {
+        color:red;
+    }
+    input.error {
+        border:1px solid red;
+    }
+    </style>
 
 </head>
 
@@ -31,13 +39,13 @@
                         <h1 class="panel-title text-center">Club - Administracion</h1>
                     </div>
                     <div class="panel-body">
-                        <form role="form">
+                        <form id="frmLogin">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Correo electrónico" name="email" type="email" autofocus>
+                                    <input id="email" class="form-control" placeholder="Usuario" name="email" type="text" autofocus data-bind="value:usuario">
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Contraseña" name="password" type="password" value="">
+                                    <input id="password" class="form-control" placeholder="Contraseña" name="password" type="password" data-bind="value:password">
                                 </div>
                                 <div class="checkbox">
                                     <label>
@@ -45,7 +53,7 @@
                                     </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <a href="resumen.html" class="btn btn-lg btn-primary btn-block">Entrar</a>
+                                <button id="btnLogin" class="btn btn-lg btn-primary btn-block">Entrar</button>
                             </fieldset>
                         </form>
                     </div>
@@ -59,8 +67,32 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
 
+    <!-- Page-Level Plugin Scripts - Blank -->
+
     <!-- SB Admin Scripts - Include with every page -->
     <script src="js/sb-admin.js"></script>
+
+    <!-- Moment formateo de fechas -->
+    <script type="text/javascript" src="js/moment-with-langs.js"></script>
+    <!-- Knockout para el tratamiento de los modelos -->
+    <script type="text/javascript" src="js/knockout-3.1.0.js"></script>
+    <!-- Bootbox, para secar mensajes en pantalla -->
+    <script type="text/javascript" src="js/bootbox.js"></script>
+    <!-- Libreria para verificación -->
+    <script type="text/javascript" src="js/jquery.validate.js"></script>
+    <script type="text/javascript" src="js/messages_es.js"></script>
+    <!-- Widget para carga de ficheros -->
+    <script type="text/javascript" src="js/pekeUpload.js"></script>
+
+    <!-- Librería propia -->    
+    <script type="text/javascript" src="js/teletaxi_club.js"></script>
+    <!-- Scripts a nivel de página -->
+    <script type="text/javascript" src="js/loginA_web.js"></script>
+    <script>
+    $(document).ready(function() {
+        initForm();
+    });
+    </script>
 
 </body>
 

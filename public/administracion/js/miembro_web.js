@@ -10,6 +10,7 @@ function initMiembro() {
     vm = new miembroModel();
     ko.applyBindings(vm);
     cargarMiembroDetalle(idMiembro);
+    $('#loader').hide();
 }
 
 function miembroModel() {

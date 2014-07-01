@@ -162,6 +162,10 @@ function alCarro() {
         bootbox.alert("Número de unidades incorrecto");
         return;
     }
+    // protección contra clic repetido
+    // bloquear el botón (posible gif animado)
+    $('#btnAlcarro').hide();
+    $('#loader').show();
     // utilizamos la librería async (https://github.com/caolan/async) 
     // para procesar las llamadas secuenciales de funciones asícronas.
     async.series([
@@ -225,6 +229,9 @@ function alCarro() {
 
         }
     ], function(err, results) {
+        // desbloqueo de la prevención de doble clic
+        $('#btnAlcarro').show();
+        $('#loader').hide();
         if (err) {
             bootbox.alert("ERROR:<br/>" + err.message);
             return;

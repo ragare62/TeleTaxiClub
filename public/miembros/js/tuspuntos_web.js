@@ -113,6 +113,7 @@ function cargarMiembroDetalle(idMiembro) {
                 loadTablaLlamadas();
                 dataCanjes = vm.canjes();
                 loadTablaCanjes();
+                $('#loader').hide();
             },
             error: function(xhr, textStatus, errorThrwon) {
                 bootbox.alert("ERROR:<br/>" + xhr.responseText, function() {

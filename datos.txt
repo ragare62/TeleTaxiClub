@@ -1,0 +1,14 @@
+FIREWALL:
+Desde la red local está en 192.168.0.254
+Desde el servidor 192.168.3.254
+Usuario: admin
+Password: teletaxi2013
+FIREWALL WAN:
+Interfaz = 10.1.1.1
+Router ADSK = 10.1.1.254
+
+------------------------------------
+1&1:
+
+ID:177325676
+PASS:20Aritel12
