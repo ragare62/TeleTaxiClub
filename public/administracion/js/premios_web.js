@@ -31,7 +31,7 @@ function deletePremio(idPremio) {
                     };
                     $.ajax({
                         type: "DELETE",
-                        url: "/api/premios/" + idPremio,
+                        url: "../api/premios/" + idPremio,
                         dataType: "json",
                         contentType: "application/json",
                         data: JSON.stringify(data),
@@ -59,7 +59,7 @@ function editPremio(idPremio) {
 function loadPremios() {
     $.ajax({
         type: "GET",
-        url: "/api/premios",
+        url: "../api/premios",
         dataType: "json",
         success: function(premios, textStatus) {
             dataPremios = premios;
@@ -154,6 +154,7 @@ function viewModel() {
     self.hastaFecha = ko.observable();
     self.stockInicial = ko.observable();
     self.nombreFichero = ko.observable();
+    self.textoCanje = ko.observable();
 }
 
 function datosOK() {
@@ -212,12 +213,13 @@ function aceptarForm() {
             "desdeFecha": desdeFecha,
             "hastaFecha": hastaFecha,
             "stockInicial": vm.stockInicial(),
-            "nombreFichero": vm.nombreFichero()
+            "nombreFichero": vm.nombreFichero(),
+            "textoCanje": vm.textoCanje()
         };
         if (vm.idPremio()) {
             $.ajax({
                 type: "PUT",
-                url: "/api/premios/" + vm.idPremio(),
+                url: "../api/premios/" + vm.idPremio(),
                 dataType: "json",
                 contentType: "application/json",
                 data: JSON.stringify(data),
@@ -230,7 +232,7 @@ function aceptarForm() {
             data.idPremio = 0;
             $.ajax({
                 type: "POST",
-                url: "/api/premios/",
+                url: "../api/premios/",
                 dataType: "json",
                 contentType: "application/json",
                 data: JSON.stringify(data),
@@ -245,7 +247,7 @@ function aceptarForm() {
 }
 
 function sucUpload(file, data) {
-    $('#imagen').attr('src', data.FullUrl);
+    $('#imagen').attr('src', '../images/' + data.FileName);
     vm.nombreFichero(data.FileName);
 }
 
@@ -263,7 +265,7 @@ function createUpload(idPremio) {
         theme: "bootstrap",
         multi: false,
         btnText: "Cargar / cambiar imagen",
-        url: "/api/uploads/" + idPremio,
+        url: "../api/uploads/" + idPremio,
         onFileError: errUpload,
         onFileSuccess: sucUpload,
     });
@@ -275,7 +277,7 @@ function cargarPremio(idPremio) {
         // búsqueda del registro implicado
         $.ajax({
             type: "GET",
-            url: "/api/premios/" + idPremio,
+            url: "../api/premios/" + idPremio,
             dataType: "json",
             contentType: "application/json",
             success: function(data, status) {
@@ -295,8 +297,9 @@ function cargarPremio(idPremio) {
                 vm.stockInicial(data.stockInicial);
                 vm.nombreFichero(data.nombreFichero);
                 if (vm.nombreFichero()) {
-                    $('#imagen').attr('src', "/images/" + vm.nombreFichero());
+                    $('#imagen').attr('src', "../images/" + vm.nombreFichero());
                 }
+                vm.textoCanje(data.textoCanje);
                 createUpload(vm.idPremio());
             }
         });

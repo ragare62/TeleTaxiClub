@@ -1,14 +1,15 @@
-FIREWALL:
-Desde la red local está en 192.168.0.254
-Desde el servidor 192.168.3.254
-Usuario: admin
-Password: teletaxi2013
-FIREWALL WAN:
-Interfaz = 10.1.1.1
-Router ADSK = 10.1.1.254
+----------------------------------
+SCRIPT DE INSTALACION
+---------------------------------
+npm run-script install-windows-service
+
 
 ------------------------------------
-1&1:
-
-ID:177325676
-PASS:20Aritel12
+IIS7 MONTAJE
+....................................
+Como montar el proxi 
+http://dvisagie.blogspot.com.es/2013/02/running-nodejs-alongside-iis-on-windows.html
+ARR (Aplication request routing)
+http://www.iis.net/downloads/microsoft/application-request-routing
+URL Rewrite
+http://www.iis.net/downloads/microsoft/url-rewrite

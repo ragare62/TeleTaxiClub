@@ -18,7 +18,7 @@ function initCarro() {
 function loadCarro() {
     $.ajax({
         type: "GET",
-        url: "/api/carro/" + vm.idMiembro(),
+        url: "../api/carro/" + vm.idMiembro(),
         dataType: "json",
         success: function(canjes, textStatus) {
             dataCarro = canjes;
@@ -91,7 +91,7 @@ function cargarMiembro(idMiembro) {
         // búsqueda del registro implicado
         $.ajax({
             type: "GET",
-            url: "/api/miembros/" + idMiembro,
+            url: "../api/miembros/" + idMiembro,
             dataType: "json",
             contentType: "application/json",
             success: function(data, status) {
@@ -203,7 +203,7 @@ function deleteCanje(idCanje) {
                     };
                     $.ajax({
                         type: "DELETE",
-                        url: "/api/canjes/" + idCanje,
+                        url: "../api/canjes/" + idCanje,
                         dataType: "json",
                         contentType: "application/json",
                         data: JSON.stringify(data),
@@ -243,7 +243,7 @@ function deleteCarro(idMiembro) {
                     callback: function() {
                         $.ajax({
                             type: "DELETE",
-                            url: "/api/borra_carro/" + vm.idMiembro(),
+                            url: "../api/borra_carro/" + vm.idMiembro(),
                             dataType: "json",
                             contentType: "application/json",
                             success: function(data, status) {
@@ -280,7 +280,7 @@ function confirmaCarro(idMiembro) {
                     callback: function() {
                         $.ajax({
                             type: "POST",
-                            url: "/api/confirma_carro/" + vm.idMiembro(),
+                            url: "../api/confirma_carro/" + vm.idMiembro(),
                             dataType: "json",
                             contentType: "application/json",
                             success: function(data, status) {

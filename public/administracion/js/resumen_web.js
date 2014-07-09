@@ -18,7 +18,7 @@ function initResumen() {
 function loadResumen() {
     $.ajax({
         type: "GET",
-        url: "/api/estadisticas/numllamadas/" + moment().format("YYYY"),
+        url: "../api/estadisticas/numllamadas/" + moment().format("YYYY"),
         dataType: "json",
         success: function(resumen, textStatus) {
             dataResumen = resumen;

@@ -131,7 +131,7 @@ function cargarMiembro(idMiembro) {
         // búsqueda del registro implicado
         $.ajax({
             type: "GET",
-            url: "/api/miembros/" + idMiembro,
+            url: "../api/miembros/" + idMiembro,
             dataType: "json",
             contentType: "application/json",
             success: function(data, status) {
@@ -197,7 +197,7 @@ function aceptarForm() {
         if (vm.idMiembro()) {
             $.ajax({
                 type: "PUT",
-                url: "/api/miembros/" + vm.idMiembro(),
+                url: "../api/miembros/" + vm.idMiembro(),
                 dataType: "json",
                 contentType: "application/json",
                 data: JSON.stringify(data),
@@ -206,7 +206,7 @@ function aceptarForm() {
                     // los datos correctamente
                     //window.open('premios.html', '_self');
                     bootbox.alert("El proceso de alta ha finalizado correctamente. Ya puede acceder al espacio club", function() {
-                        window.open('/miembros/loginB.html');
+                        window.open('../miembros/loginB.html');
                     });
                 },
                 error: errorAjax

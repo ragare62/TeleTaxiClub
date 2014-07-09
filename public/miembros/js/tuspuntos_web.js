@@ -77,7 +77,7 @@ function cargarMiembroDetalle(idMiembro) {
         // búsqueda del registro implicado
         $.ajax({
             type: "GET",
-            url: "/api/miembros_detalle/" + idMiembro,
+            url: "../api/miembros_detalle/" + idMiembro,
             dataType: "json",
             contentType: "application/json",
             success: function(data, status) {

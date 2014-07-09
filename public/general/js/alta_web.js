@@ -41,15 +41,21 @@ function loginForm() {
         var data = {
             "email": vm.email()
         };
+        // protección contra clic repetido
+        // bloquear el botón (posible gif animado)
+        $('#btnLogin').hide();
+        $('#loader').show();
         $.ajax({
             type: "POST",
-            url: "/api/login_miembro_primero/",
+            url: "../api/login_miembro_primero/",
             dataType: "json",
             contentType: "application/json",
             data: JSON.stringify(data),
             success: function(data, status) {
+                $('#btnLogin').show();
+                $('#loader').hide();
                 bootbox.alert("Revise su correo y siga las indicaciones del mensaje de bienvenida", function() {
-                    window.open('index.html', '_self ');
+                    window.open('index.html', '_top');
                 });
             },
             error: errorAjax

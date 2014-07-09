@@ -19,7 +19,7 @@ function initCatalogo() {
 function loadCatalogo() {
     $.ajax({
         type: "GET",
-        url: "/api/premios",
+        url: "../api/premios",
         dataType: "json",
         success: function(premios, textStatus) {
             dataPremios = premios;
@@ -90,7 +90,7 @@ function cargarMiembro(idMiembro) {
         // búsqueda del registro implicado
         $.ajax({
             type: "GET",
-            url: "/api/miembros/" + idMiembro,
+            url: "../api/miembros/" + idMiembro,
             dataType: "json",
             contentType: "application/json",
             success: function(data, status) {
@@ -128,7 +128,7 @@ function cargarMiembro(idMiembro) {
 }
 
 function formatLinkImage(name) {
-    return '/images/' + name;
+    return '../images/' + name;
 }
 
 function formatFechas(desdeFecha, hastaFecha) {
@@ -158,7 +158,7 @@ function canjear(id, titulo, puntos) {
 }
 
 function alCarro() {
-    if (!vm.premio_unidades()) {
+    if (!vm.premio_unidades() || vm.premio_unidades() <= 0) {
         bootbox.alert("Número de unidades incorrecto");
         return;
     }
@@ -174,7 +174,7 @@ function alCarro() {
             // controlar el número de puntos
             $.ajax({
                 type: "GET",
-                url: "/api/puntos/" + vm.idMiembro(),
+                url: "../api/puntos/" + vm.idMiembro(),
                 dataType: "json",
                 contentType: "application/json",
                 success: function(data, status) {
@@ -211,7 +211,7 @@ function alCarro() {
             };
             $.ajax({
                 type: "POST",
-                url: "/api/canjes/",
+                url: "../api/canjes/",
                 dataType: "json",
                 contentType: "application/json",
                 data: JSON.stringify(canjeDb),

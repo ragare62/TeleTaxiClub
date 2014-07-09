@@ -48,12 +48,12 @@ function loginForm() {
         };
         $.ajax({
             type: "POST",
-            url: "/api/login_miembro/",
+            url: "../api/login_miembro/",
             dataType: "json",
             contentType: "application/json",
             data: JSON.stringify(data),
             success: function(data, status) {
-                window.open('/miembros/tuspuntos.html?idMiembro=' + data.idMiembro, '_self');
+                window.open('../miembros/tuspuntos.html?idMiembro=' + data.idMiembro, '_self');
             },
             error: errorAjax
         });

@@ -17,7 +17,10 @@ function gup(name) {
 var errorAjax = function(xhr, textStatus, errorThrwon) {
     var m = xhr.responseText;
     if (!m) m = "Error general posiblemente falla la conexión";
-    bootbox.alert("<span class='text-danger'>ERROR:</span><br/>" + m, function() {});
+    bootbox.alert("<span class='text-danger'>ERROR:</span><br/>" + m, function() {
+        // por si hay algun gif activo
+        $('#loader').hide();
+    });
 }
 
 // funcion general para el formateo de fechas.

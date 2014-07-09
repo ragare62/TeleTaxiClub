@@ -125,7 +125,7 @@ function cargarMiembro(idMiembro) {
         // búsqueda del registro implicado
         $.ajax({
             type: "GET",
-            url: "/api/miembros/" + idMiembro,
+            url: "../api/miembros/" + idMiembro,
             dataType: "json",
             contentType: "application/json",
             success: function(data, status) {
@@ -190,14 +190,14 @@ function aceptarForm() {
         if (vm.idMiembro()) {
             $.ajax({
                 type: "PUT",
-                url: "/api/miembros/" + vm.idMiembro(),
+                url: "../api/miembros/" + vm.idMiembro(),
                 dataType: "json",
                 contentType: "application/json",
                 data: JSON.stringify(data),
                 success: function(data, status) {
                     // hay que estudiar que hacer cuando cambie 
                     // los datos correctamente
-
+                    bootbox.alert("Registro guardado correctamente");
                     //window.open('premios.html', '_self');
                 },
                 error: errorAjax
@@ -206,7 +206,7 @@ function aceptarForm() {
             data.idMiembro = 0;
             $.ajax({
                 type: "POST",
-                url: "/api/miembros/",
+                url: "../api/miembros/",
                 dataType: "json",
                 contentType: "application/json",
                 data: JSON.stringify(data),

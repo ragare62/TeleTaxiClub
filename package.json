@@ -1,7 +1,11 @@
 {
-  "name": "TaxiClub",
+  "name": "TeleTaxiClub",
   "version": "0.0.1",
   "description": "Sistema de fidelización TaxiClub",
+  "scripts": {
+    "install-windows-service": "node_modules\\.bin\\winser -i",
+    "uninstall-windows-service": "node_modules\\.bin\\winser -r"
+  },
   "dependencies": {
     "mysql": "*",
     "express": "~4.0.0",
@@ -11,6 +15,8 @@
     "formidable": "^1.0.14",
     "async": "^0.9.0",
     "moment": "^2.7.0",
-    "nodemailer": "^0.7.0"
+    "nodemailer": "^0.7.0",
+    "winser": "^0.2.0",
+    "handlebars": "^2.0.0-alpha.4"
   }
 }

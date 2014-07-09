@@ -16,7 +16,7 @@ function initCatalogo() {
 function loadCatalogo() {
     $.ajax({
         type: "GET",
-        url: "/api/premios",
+        url: "../api/premios",
         dataType: "json",
         success: function(premios, textStatus) {
             dataPremios = premios;
@@ -36,7 +36,7 @@ function modelCatalogo() {
 }
 
 function formatLinkImage(name) {
-    return '/images/' + name;
+    return '../images/' + name;
 }
 
 function formatFechas(desdeFecha, hastaFecha) {

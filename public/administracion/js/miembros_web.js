@@ -22,7 +22,7 @@ function editMiembro(idMiembro) {
 function loadMiembros() {
     $.ajax({
         type: "GET",
-        url: "/api/miembros",
+        url: "../api/miembros",
         dataType: "json",
         success: function(miembros, textStatus) {
             dataMiembros = miembros;

@@ -125,7 +125,7 @@ function cargarMiembro(idMiembro) {
         // búsqueda del registro implicado
         $.ajax({
             type: "GET",
-            url: "/api/miembros/" + idMiembro,
+            url: "../api/miembros/" + idMiembro,
             dataType: "json",
             contentType: "application/json",
             success: function(data, status) {
@@ -190,7 +190,7 @@ function aceptarForm() {
         if (vm.idMiembro()) {
             $.ajax({
                 type: "PUT",
-                url: "/api/miembros/" + vm.idMiembro(),
+                url: "../api/miembros/" + vm.idMiembro(),
                 dataType: "json",
                 contentType: "application/json",
                 data: JSON.stringify(data),
@@ -206,7 +206,7 @@ function aceptarForm() {
             data.idMiembro = 0;
             $.ajax({
                 type: "POST",
-                url: "/api/miembros/",
+                url: "../api/miembros/",
                 dataType: "json",
                 contentType: "application/json",
                 data: JSON.stringify(data),

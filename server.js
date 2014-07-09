@@ -2,6 +2,8 @@
 // Servidor principal de API
 // ===============================================
 // Cargar los paquetes externos
+var fs = require('fs');
+var moment = require('moment');
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -22,13 +24,38 @@ var puntos_api = require('./lib/puntos_api');
 var correo_api = require('./lib/correo_api');
 var estadisticas_api = require('./lib/estadisticas_api');
 
+var express_log_file = __dirname + '/logs/node.express.log';
+var error_log_file = __dirname + '/logs/node.error.log';
+var console_log_file = __dirname + '/logs/node.console.log';
 
 // utilizar el parseador
 app.use(bodyParser());
-app.use(morgan('short'));
+// log de eventos
+var logfile = fs.createWriteStream(express_log_file, {
+    'flags': 'a'
+});
+app.use(morgan({
+    format: 'short',
+    stream: logfile
+}));
+// manejo CORS
 app.use(cors());
-
+// servidor de html estático
 app.use(express.static(__dirname + '/public'))
+
+
+// redirect stdout / stderr
+process.__defineGetter__('stderr', function() {
+    return fs.createWriteStream(error_log_file, {
+        flags: 'a'
+    })
+});
+
+process.__defineGetter__('stdout', function() {
+    return fs.createWriteStream(console_log_file, {
+        flags: 'a'
+    })
+});
 
 // MONTAR LAS RUTAS
 // ===============================================

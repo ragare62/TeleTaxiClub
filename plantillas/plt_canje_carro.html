@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Teletaxi Club (Canje de premios)</title>
+	</head>
+	<body>
+
+	<h3>Teletaxi Club (Canje de premios)</h3>
+	<p>
+		Estimado: {{nombre}}
+		<br/>
+		A continuacion le detallamos los premios elegidos por usted
+	</p>
+	{{#each canjes}}
+	<div>
+		<hr/>
+		{{fecha}}
+		<p><strong>Regalo: </strong>{{premio.titulo}}</p>
+		<p><strong>Unidades: </strong>{{unidades}} <strong>Puntos gastado: </strong>{{puntos}}</p>
+		<p><strong>Notas: </strong>{{premio.textoCanje}}</p>
+	</div>
+	{{/each}}
+	<p>Gracias.</p>
+
+	</body>
+</html>
